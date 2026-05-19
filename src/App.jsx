@@ -1,37 +1,49 @@
 import React, { useState } from 'react'
 import ProjectCard from './components/ProjectCard'
 
-// 📦 ดึงข้อมูลโปรเจกต์มารวมไว้ตรงนี้ เพื่อเปลี่ยนคำว่า "ส่งตรงจากฟาร์มของเกษตรกร" ให้พี่ทันที
+// 📦 ชุดข้อมูลโปรเจกต์ทั้ง 4 ของพี่ (รวมข้อมูลรับเหมาของลุงบุญมีเรียบร้อยครับ)
 const projectsData = [
   {
     id: 'promcare',
     title: 'Promcare Service',
     description: 'ระบบบริหารจัดการงานซ่อมและดูแลสมาชิกอัจฉริยะ ยกระดับการบริการสู่มาตรฐานสากล',
-    link: 'https://promcare-service-url.com', // ลิงก์ระบบของพี่
+    link: 'https://promcare-service-url.com', // 🔗 ใส่ลิงก์แอปของพี่ตรงนี้ได้เลยครับ
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop'
   },
   {
     id: 'lungboonmee',
-    title: 'ฟาร์มลุงบุญมี',
-    // ✨ แก้ไขคำตามที่พี่ต้องการ เรียบร้อยครับ!
-    description: 'ผลผลิตเกรดพรีเมียมคัดสรรอย่างพิถีพิถัน ส่งตรงจากฟาร์มของเกษตรกร เพื่อสุขภาพที่ดีของทุกคน',
-    link: 'https://lungboonmee-url.com', // ลิงก์ระบบของพี่
+    title: 'ลุงบุญมีรับเหมา',
+    // ✨ ปรับปรุงเป็นงานรับเหมาก่อสร้างและตกแต่งภายในเรียบร้อยครับพี่!
+    description: 'ผลงานควบคุมงานรับเหมาก่อสร้างและตกแต่งภายใน พลิกโฉมฐานรากที่จัดสรรอย่างพิถีพิถัน ส่งตรงจากฝีมือของช่างผู้เชี่ยวชาญ เพื่อความสำเร็จของทุกบ้านและอาคาร',
+    link: 'https://lungboonmee-url.com', // 🔗 ใส่ลิงก์แอปของพี่ตรงนี้ได้เลยครับ
     image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=600&auto=format&fit=crop'
+  },
+  {
+    id: 'family-baan-rao',
+    title: 'Family-Baan-Rao',
+    description: 'แอปพลิเคชันระบบการจัดการการ์ดอวยพรและการ์ดระลึกถึงความทรงจำสำหรับครอบครัว',
+    link: 'https://family-baan-rao-url.com', // 🔗 ใส่ลิงก์แอปของพี่ตรงนี้ได้เลยครับ
+    image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop'
+  },
+  {
+    id: 'financial-minor',
+    title: 'Minor Wealth Platform',
+    description: 'ระบบจำลองการลงทุนและติดตามดัชนีตลาดการเงินระดับสากล ออกแบบมาเพื่อกลุ่มเยาวชนโดยเฉพาะ',
+    link: 'https://minor-wealth-url.com', // 🔗 ใส่ลิงก์แอปของพี่ตรงนี้ได้เลยครับ
+    image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=600&auto=format&fit=crop'
   }
-  // พี่สามารถเพิ่มหรือแก้ไขโปรเจกต์อื่นๆ ต่อท้ายในอนาคตตรงนี้ได้เลยครับ
 ];
 
 export default function App() {
-  // 1. ระบบล็อกอิน
+  // 1. สร้าง State สำหรับระบบล็อกอิน
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  // 🔑 ล็อก Username และ Password ให้พี่ตามนี้เลยครับ:
-  // User: admin
-  // Pass: promcare2026
+  // 🔑 บัญชีเข้าสู่ระบบที่ตั้งค่าไว้ให้พี่:
+  // USERNAME: admin | PASSWORD: promcare2026
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     if (username === 'admin' && password === 'promcare2026') {
@@ -77,7 +89,7 @@ export default function App() {
           </h1>
           <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mb-6" />
           
-          {/* ✨ ข้อความแสดงความมุ่งมั่นพัฒนาธุรกิจที่พี่เลือก */}
+          {/* ✨ ข้อความแสดงความมุ่งมั่นพัฒนาธุรกิจพรีเมียมที่พี่เลือก */}
           <p className="text-sm sm:text-base text-gray-300 font-light leading-relaxed max-w-xl mx-auto">
             เรามุ่งมั่นร่วมสร้างและผลักดันทุกเป้าหมายทางธุรกิจ บ่มเพาะศักยภาพเพื่อก้าวสู่ความสำเร็จที่ไร้ขีดจำกัด
           </p>
@@ -89,7 +101,7 @@ export default function App() {
           )}
         </header>
 
-        {/* โซนแสดงการ์ดโปรเจกต์ (ส่งสิทธิ์ isLoggedIn คุมการกดลิงก์) */}
+        {/* โซนแสดงการ์ดโปรเจกต์ (วนลูปครบทั้ง 4 ใบ และส่งสิทธิ์ความปลอดภัยคุมลิงก์) */}
         <main className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {projectsData.map((project) => (
             <ProjectCard key={project.id} project={project} isLoggedIn={isLoggedIn} />
@@ -128,7 +140,7 @@ export default function App() {
                   value={username} 
                   onChange={(e) => setUsername(e.target.value)} 
                   className="w-full px-4 py-2.5 rounded-lg border border-white/10 bg-black/50 text-white font-mono text-sm focus:outline-none focus:border-emerald-500/50 transition-colors"
-                  placeholder="กรอกชื่อผู้ใช้"
+                  placeholder="admin"
                   required 
                 />
               </div>
@@ -140,7 +152,7 @@ export default function App() {
                   value={password} 
                   onChange={(e) => setPassword(e.target.value)} 
                   className="w-full px-4 py-2.5 rounded-lg border border-white/10 bg-black/50 text-white font-mono text-sm focus:outline-none focus:border-emerald-500/50 transition-colors"
-                  placeholder="กรอกรหัสผ่าน"
+                  placeholder="••••••••"
                   required 
                 />
               </div>
