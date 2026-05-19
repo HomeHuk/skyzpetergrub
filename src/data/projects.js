@@ -1,42 +1,36 @@
 export const projects = [
   {
-    id: "promcare",
-    title: "Promcare Service",
-    subtitle: "Next-Gen Repair Solutions",
-    description: "ระบบบริหารงานซ่อมยานยนต์และเครื่องใช้ไฟฟ้าระดับอัจฉริยะ แม่นยำ รวดเร็ว ด้วยระบบติดตามสถานะแบบเรียลไทม์",
-    accentColor: "from-blue-500 to-cyan-400",
-    shadowColor: "rgba(6, 182, 212, 0.15)",
-    link: "https://promcare.vercel.app",
-    adminLink: "https://promcare.vercel.app/admin"
+    id: 'promcare',
+    title: 'Promcare Service',
+    description: 'ระบบบริหารจัดการงานซ่อมและดูแลสมาชิกอัจฉริยะ ยกระดับการบริการสู่มาตรฐานสากล',
+    link: 'https://promcare.vercel.app',       // 🔗 ลิงก์หน้าแอปทั่วไป
+    adminLink: 'https://promcare.vercel.app/admin', // ⚙️ ลิงก์หน้าแอปของแอดมิน
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop'
   },
   {
-    id: "lungboonmee",
-    title: "Lungboonmee",
-    subtitle: "Premium Construction & Design",
-    description: "แพลตฟอร์มควบคุมงานรับเหมาก่อสร้างและตกแต่งภายใน พลิกโฉมการจัดสรรช่างและวัสดุด้วยเทคโนโลยีที่โปร่งใส",
-    accentColor: "from-amber-500 to-orange-600",
-    shadowColor: "rgba(245, 158, 11, 0.15)",
-    link: "https://lungboonmee.vercel.app",
-    adminLink: "https://lungboonmee.vercel.app/dashboard"
+    id: 'lungboonmee',
+    title: 'ลุงบุญมี',
+    description: 'รับเหมาก่อสร้างและตกแต่งภายใน พลิกโฉมฐานรากที่จัดสรรอย่างพิถีพิถัน ส่งตรงจากฝีมือของช่างผู้เชี่ยวชาญ ซื่อสัตย์ งานไว มั่นใจลุงบุญมี',
+    link: 'https://lungboonmee.vercel.app',       // 🔗 ลิงก์หน้าแอปทั่วไป
+    adminLink: 'https://lungboonmee.vercel.app/dashboard', // ⚙️ ลิงก์หน้าแอปของแอดมิน
+    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop'
   },
   {
-    id: "bandektutor",
-    title: "Bandektutor",
-    subtitle: "The Ultimate Knowledge Academy",
-    description: "คลังข้อสอบดิจิทัลและระบบติวเตอร์อัจฉริยะ สำหรับเตรียมสอบงานราชการและการทดสอบระดับประเทศ",
-    accentColor: "from-purple-500 to-indigo-500",
-    shadowColor: "rgba(168, 85, 247, 0.15)",
-    link: "https://bandektutor.vercel.app",
-    adminLink: "https://bandektutor.vercel.app/admin"
+    id: 'phak-khap',
+    title: 'ผักค้าบ',
+    description: 'ผลผลิตเกรดพรีเมียมคัดสรรอย่างพิถีพิถัน ส่งตรงจากฟาร์มของเกษตรกร เพื่อสุขภาพที่ดีของทุกคน',
+    link: 'https://phakhub.vercel.app',       // 🔗 ลิงก์หน้าแอปทั่วไป
+    adminLink: 'https://phakhub.vercel.app/dashboard.html', // ⚙️ ลิงก์หน้าแอปของแอดมิน
+    image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=600&auto=format&fit=crop'
   },
   {
-    id: "phukhub",
-    title: "Phukhub",
-    subtitle: "Organic Tech Farm-to-Table",
-    description: "นวัตกรรมตลาดผักสดออนไลน์ ส่งตรงจากฟาร์มระบบปิดอัจฉริยะถึงมือผู้บริโภควันต่อวันเพื่อความสดใหม่สูงสุด",
-    accentColor: "from-emerald-400 to-teal-500",
-    shadowColor: "rgba(52, 211, 153, 0.15)",
-    link: "https://phakhub.vercel.app",
-    adminLink: "https://phakhub.vercel.app/dashboard.html"
+    id: 'baan-dek-tutor',
+    title: 'บ้านเด็กติวเตอร์',
+    // ✨ ปรับปรุงเป็นคำอธิบาย ติวสอบงานราชการ และคลังข้อสอบ เรียบร้อยครับพี่!
+    description: 'ศูนย์รวมคลังข้อสอบและระบบติวสอบแข่งขันเข้ารับราชการอย่างมืออาชีพ เพื่อความสำเร็จในเส้นทางสายอาชีพราชการ',
+    link: 'https://bandektutor.vercel.app',       // 🔗 ลิงก์หน้าแอปทั่วไป
+    adminLink: 'https://bandektutor.vercel.app/admin', // ⚙️ ลิงก์หน้าแอปของแอดมิน
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=600&auto=format&fit=crop'
   }
 ];
+

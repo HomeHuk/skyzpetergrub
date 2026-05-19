@@ -1,49 +1,16 @@
 import React, { useState } from 'react'
+import { projects } from './data/projects'
 import ProjectCard from './components/ProjectCard'
 
-// 📦 ชุดข้อมูลโปรเจกต์ทั้ง 4 ของพี่ (รวมข้อมูลรับเหมาของลุงบุญมีเรียบร้อยครับ)
-const projectsData = [
-  {
-    id: 'promcare',
-    title: 'Promcare Service',
-    description: 'ระบบบริหารจัดการงานซ่อมและดูแลสมาชิกอัจฉริยะ ยกระดับการบริการสู่มาตรฐานสากล',
-    link: 'https://promcare-service-url.com', // 🔗 ใส่ลิงก์แอปของพี่ตรงนี้ได้เลยครับ
-    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop'
-  },
-  {
-    id: 'lungboonmee',
-    title: 'ลุงบุญมีรับเหมา',
-    // ✨ ปรับปรุงเป็นงานรับเหมาก่อสร้างและตกแต่งภายในเรียบร้อยครับพี่!
-    description: 'ผลงานควบคุมงานรับเหมาก่อสร้างและตกแต่งภายใน พลิกโฉมฐานรากที่จัดสรรอย่างพิถีพิถัน ส่งตรงจากฝีมือของช่างผู้เชี่ยวชาญ เพื่อความสำเร็จของทุกบ้านและอาคาร',
-    link: 'https://lungboonmee-url.com', // 🔗 ใส่ลิงก์แอปของพี่ตรงนี้ได้เลยครับ
-    image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=600&auto=format&fit=crop'
-  },
-  {
-    id: 'family-baan-rao',
-    title: 'Family-Baan-Rao',
-    description: 'แอปพลิเคชันระบบการจัดการการ์ดอวยพรและการ์ดระลึกถึงความทรงจำสำหรับครอบครัว',
-    link: 'https://family-baan-rao-url.com', // 🔗 ใส่ลิงก์แอปของพี่ตรงนี้ได้เลยครับ
-    image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop'
-  },
-  {
-    id: 'financial-minor',
-    title: 'Minor Wealth Platform',
-    description: 'ระบบจำลองการลงทุนและติดตามดัชนีตลาดการเงินระดับสากล ออกแบบมาเพื่อกลุ่มเยาวชนโดยเฉพาะ',
-    link: 'https://minor-wealth-url.com', // 🔗 ใส่ลิงก์แอปของพี่ตรงนี้ได้เลยครับ
-    image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=600&auto=format&fit=crop'
-  }
-];
-
 export default function App() {
-  // 1. สร้าง State สำหรับระบบล็อกอิน
+  // 1. ระบบเช็กสถานะการล็อกอิน
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  // 🔑 บัญชีเข้าสู่ระบบที่ตั้งค่าไว้ให้พี่:
-  // USERNAME: admin | PASSWORD: promcare2026
+  // 🔑 ยืนยันรหัสผ่านปลดล็อก (User: admin / Pass: promcare2026)
   const handleLoginSubmit = (e) => {
     e.preventDefault();
     if (username === 'admin' && password === 'promcare2026') {
@@ -58,7 +25,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen w-full bg-gradient-to-br from-emerald-950/80 via-slate-950 to-blue-950/85 font-sans text-white flex items-center justify-center p-4 sm:p-8 overflow-x-hidden antialiased">
       
-      {/* เอฟเฟกต์แสงไฟนีออนพรีเมียมเบื้องหลัง */}
+      {/* ลูกเล่นแสงไฟนีออนพรีเมียมเบื้องหลัง */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
 
@@ -101,9 +68,9 @@ export default function App() {
           )}
         </header>
 
-        {/* โซนแสดงการ์ดโปรเจกต์ (วนลูปครบทั้ง 4 ใบ และส่งสิทธิ์ความปลอดภัยคุมลิงก์) */}
+        {/* โซนแสดงการ์ดจริง (ดึงจากไฟล์ดาต้าหลักของพี่โดยตรง ครบ 4 ใบ ไม่สลับแน่นอน) */}
         <main className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {projectsData.map((project) => (
+          {projects.map((project) => (
             <ProjectCard key={project.id} project={project} isLoggedIn={isLoggedIn} />
           ))}
         </main>
@@ -114,55 +81,23 @@ export default function App() {
         </footer>
       </div>
 
-      {/* หน้าต่าง Popup สําหรับกรอก User/Pass */}
+      {/* หน้าต่าง Popup สําหรับ Login */}
       {showLoginModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="relative w-full max-w-sm rounded-2xl border border-white/10 bg-slate-950/95 p-8 shadow-2xl">
-            <button 
-              type="button" 
-              onClick={() => setShowLoginModal(false)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"
-            >
-              ✕
-            </button>
-
-            <h3 className="text-center text-lg font-mono tracking-wider text-emerald-400 mb-6">
-              🔒 AUTHORIZED ACCESS ONLY
-            </h3>
-            
+            <button type="button" onClick={() => setShowLoginModal(false)} className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">✕</button>
+            <h3 className="text-center text-lg font-mono tracking-wider text-emerald-400 mb-6">🔒 AUTHORIZED ACCESS ONLY</h3>
             {error && <p className="text-red-400 text-xs text-center mb-4 font-sans bg-red-500/10 py-1.5 rounded border border-red-500/20">{error}</p>}
-
             <form onSubmit={handleLoginSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-mono text-gray-400 mb-1.5">USERNAME</label>
-                <input 
-                  type="text" 
-                  value={username} 
-                  onChange={(e) => setUsername(e.target.value)} 
-                  className="w-full px-4 py-2.5 rounded-lg border border-white/10 bg-black/50 text-white font-mono text-sm focus:outline-none focus:border-emerald-500/50 transition-colors"
-                  placeholder="admin"
-                  required 
-                />
+                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="w-full px-4 py-2.5 rounded-lg border border-white/10 bg-black/50 text-white font-mono text-sm focus:outline-none focus:border-emerald-500/50 transition-colors" placeholder="admin" required />
               </div>
-
               <div>
                 <label className="block text-xs font-mono text-gray-400 mb-1.5">PASSWORD</label>
-                <input 
-                  type="password" 
-                  value={password} 
-                  onChange={(e) => setPassword(e.target.value)} 
-                  className="w-full px-4 py-2.5 rounded-lg border border-white/10 bg-black/50 text-white font-mono text-sm focus:outline-none focus:border-emerald-500/50 transition-colors"
-                  placeholder="••••••••"
-                  required 
-                />
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full px-4 py-2.5 rounded-lg border border-white/10 bg-black/50 text-white font-mono text-sm focus:outline-none focus:border-emerald-500/50 transition-colors" placeholder="••••••••" required />
               </div>
-
-              <button 
-                type="submit" 
-                className="w-full mt-2 py-3 rounded-lg bg-emerald-500 text-black font-mono font-bold text-sm tracking-wider hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/20"
-              >
-                VERIFY PASSWORD
-              </button>
+              <button type="submit" className="w-full mt-2 py-3 rounded-lg bg-emerald-500 text-black font-mono font-bold text-sm tracking-wider hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/20">VERIFY PASSWORD</button>
             </form>
           </div>
         </div>
