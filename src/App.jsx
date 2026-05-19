@@ -1,19 +1,72 @@
-import React from 'react'
-import { projects } from './data/projects'
+import React, { useState } from 'react'
 import ProjectCard from './components/ProjectCard'
 
+// 📦 ดึงข้อมูลโปรเจกต์มารวมไว้ตรงนี้ เพื่อเปลี่ยนคำว่า "ส่งตรงจากฟาร์มของเกษตรกร" ให้พี่ทันที
+const projectsData = [
+  {
+    id: 'promcare',
+    title: 'Promcare Service',
+    description: 'ระบบบริหารจัดการงานซ่อมและดูแลสมาชิกอัจฉริยะ ยกระดับการบริการสู่มาตรฐานสากล',
+    link: 'https://promcare-service-url.com', // ลิงก์ระบบของพี่
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=600&auto=format&fit=crop'
+  },
+  {
+    id: 'lungboonmee',
+    title: 'ฟาร์มลุงบุญมี',
+    // ✨ แก้ไขคำตามที่พี่ต้องการ เรียบร้อยครับ!
+    description: 'ผลผลิตเกรดพรีเมียมคัดสรรอย่างพิถีพิถัน ส่งตรงจากฟาร์มของเกษตรกร เพื่อสุขภาพที่ดีของทุกคน',
+    link: 'https://lungboonmee-url.com', // ลิงก์ระบบของพี่
+    image: 'https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=600&auto=format&fit=crop'
+  }
+  // พี่สามารถเพิ่มหรือแก้ไขโปรเจกต์อื่นๆ ต่อท้ายในอนาคตตรงนี้ได้เลยครับ
+];
+
 export default function App() {
+  // 1. ระบบล็อกอิน
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  // 🔑 ล็อก Username และ Password ให้พี่ตามนี้เลยครับ:
+  // User: admin
+  // Pass: promcare2026
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    if (username === 'admin' && password === 'promcare2026') {
+      setIsLoggedIn(true);
+      setShowLoginModal(false);
+      setError('');
+    } else {
+      setError('รหัสผ่านไม่ถูกต้องครับพี่! กรุณาลองใหม่อีกครั้ง');
+    }
+  };
+
   return (
-    // เปลี่ยนมาใช้สไตล์ Gradient ยุคใหม่ (ฝั่งซ้ายเขียวเกษตรออร์แกนิก ฝั่งขวาน้ำเงิน-เทาไซเบอร์วิศวกรรม)
     <div className="relative min-h-screen w-full bg-gradient-to-br from-emerald-950/80 via-slate-950 to-blue-950/85 font-sans text-white flex items-center justify-center p-4 sm:p-8 overflow-x-hidden antialiased">
       
-      {/* เพิ่มลูกเล่นแสงไฟนีออนพรีเมียมดวงใหญ่ (Glow Effect) กระจายอยู่เบื้องหลัง */}
+      {/* เอฟเฟกต์แสงไฟนีออนพรีเมียมเบื้องหลัง */}
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* หน้ากากแก้วครอบระบบ (Glassmorphism Container) เด่นๆ คลีนๆ */}
+      {/* หน้ากากแก้วครอบระบบ (Glassmorphism Container) */}
       <div className="relative z-10 w-full max-w-7xl rounded-3xl border border-white/10 bg-black/40 backdrop-blur-2xl p-6 sm:p-12 md:p-16 shadow-2xl my-8">
         
+        {/* 🔑 ปุ่มล็อกอินดีไซน์ Quiet Luxury มุมขวาบน */}
+        <div className="absolute top-4 right-4 sm:top-6 sm:right-8 z-20">
+          <button
+            onClick={() => isLoggedIn ? setIsLoggedIn(false) : setShowLoginModal(true)}
+            className={`px-4 py-1.5 rounded-full text-xs font-mono tracking-wider border transition-all duration-300 backdrop-blur-md ${
+              isLoggedIn 
+                ? 'bg-red-500/10 border-red-500/30 text-red-400 hover:bg-red-500/20' 
+                : 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20'
+            }`}
+          >
+            {isLoggedIn ? '🔒 LOCK HUB' : '🔑 UNLOCK LINKS'}
+          </button>
+        </div>
+
         {/* หัวข้อแบรนด์หลัก */}
         <header className="text-center max-w-2xl mx-auto mb-12 sm:mb-16">
           <span className="text-xs font-mono tracking-[0.3em] uppercase bg-gradient-to-r from-emerald-400 via-indigo-200 to-blue-400 bg-clip-text text-transparent">
@@ -23,15 +76,23 @@ export default function App() {
             SKYZPETERGRUB
           </h1>
           <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mb-6" />
+          
+          {/* ✨ ข้อความแสดงความมุ่งมั่นพัฒนาธุรกิจที่พี่เลือก */}
           <p className="text-sm sm:text-base text-gray-300 font-light leading-relaxed max-w-xl mx-auto">
-            ศูนย์รวมนวัตกรรมและการพัฒนาซอฟต์แวร์แบบองค์รวม ขับเคลื่อนทุกธุรกิจสู่ระบบดิจิทัลอย่างเต็มรูปแบบ
+            เรามุ่งมั่นร่วมสร้างและผลักดันทุกเป้าหมายทางธุรกิจ บ่มเพาะศักยภาพเพื่อก้าวสู่ความสำเร็จที่ไร้ขีดจำกัด
           </p>
+
+          {!isLoggedIn && (
+            <p className="text-xs font-mono text-emerald-400/70 mt-4 animate-pulse">
+              * กรุณาปลดล็อกระบบที่มุมขวาบน เพื่อเข้าใช้งานลิงก์แอปพลิเคชัน
+            </p>
+          )}
         </header>
 
-        {/* โซนแสดงการ์ดจริง ครบทั้ง 4 โปรเจกต์แน่นอนตามที่วน Loop ไว้ */}
+        {/* โซนแสดงการ์ดโปรเจกต์ (ส่งสิทธิ์ isLoggedIn คุมการกดลิงก์) */}
         <main className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+          {projectsData.map((project) => (
+            <ProjectCard key={project.id} project={project} isLoggedIn={isLoggedIn} />
           ))}
         </main>
 
@@ -40,6 +101,61 @@ export default function App() {
           © {new Date().getFullYear()} SKYZPETERGRUB. ALL RIGHTS RESERVED.
         </footer>
       </div>
+
+      {/* หน้าต่าง Popup สําหรับกรอก User/Pass */}
+      {showLoginModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+          <div className="relative w-full max-w-sm rounded-2xl border border-white/10 bg-slate-950/95 p-8 shadow-2xl">
+            <button 
+              type="button" 
+              onClick={() => setShowLoginModal(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors"
+            >
+              ✕
+            </button>
+
+            <h3 className="text-center text-lg font-mono tracking-wider text-emerald-400 mb-6">
+              🔒 AUTHORIZED ACCESS ONLY
+            </h3>
+            
+            {error && <p className="text-red-400 text-xs text-center mb-4 font-sans bg-red-500/10 py-1.5 rounded border border-red-500/20">{error}</p>}
+
+            <form onSubmit={handleLoginSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-mono text-gray-400 mb-1.5">USERNAME</label>
+                <input 
+                  type="text" 
+                  value={username} 
+                  onChange={(e) => setUsername(e.target.value)} 
+                  className="w-full px-4 py-2.5 rounded-lg border border-white/10 bg-black/50 text-white font-mono text-sm focus:outline-none focus:border-emerald-500/50 transition-colors"
+                  placeholder="กรอกชื่อผู้ใช้"
+                  required 
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono text-gray-400 mb-1.5">PASSWORD</label>
+                <input 
+                  type="password" 
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)} 
+                  className="w-full px-4 py-2.5 rounded-lg border border-white/10 bg-black/50 text-white font-mono text-sm focus:outline-none focus:border-emerald-500/50 transition-colors"
+                  placeholder="กรอกรหัสผ่าน"
+                  required 
+                />
+              </div>
+
+              <button 
+                type="submit" 
+                className="w-full mt-2 py-3 rounded-lg bg-emerald-500 text-black font-mono font-bold text-sm tracking-wider hover:bg-emerald-400 transition-colors shadow-lg shadow-emerald-500/20"
+              >
+                VERIFY PASSWORD
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+
     </div>
   )
 }
