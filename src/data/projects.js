@@ -11,8 +11,8 @@ export const projects = [
     id: 'lungboonmee',
     title: 'ลุงบุญมี',
     description: 'รับเหมาก่อสร้างและตกแต่งภายใน พลิกโฉมฐานรากที่จัดสรรอย่างพิถีพิถัน ส่งตรงจากฝีมือของช่างผู้เชี่ยวชาญ ซื่อสัตย์ งานไว มั่นใจลุงบุญมี',
-    link: 'https://lungboonmee.vercel.app',       // 🔗 ลิงก์หน้าแอปทั่วไป
-    adminLink: 'https://lungboonmee.vercel.app/dashboard', // ⚙️ ลิงก์หน้าแอปของแอดมิน
+    link: 'https://lungboonmee-alpha.vercel.app',       // 🔗 ลิงก์หน้าแอปทั่วไป
+    adminLink: 'https://lungboonmee-alpha.vercel.app/login', // ⚙️ ลิงก์หน้าแอปของแอดมิน
     image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop'
   },
   {
